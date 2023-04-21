@@ -1,26 +1,30 @@
 package com.epam.ld.module2.testing;
 
+import java.util.Map;
+
 /**
  * The type Client.
  */
-public class Client {
-    private String addresses;
+public interface Client {
 
     /**
      * Gets addresses.
      *
      * @return the addresses
      */
-    public String getAddresses() {
-        return addresses;
-    }
+    String getAddresses();
 
     /**
      * Sets addresses.
      *
      * @param addresses the addresses
      */
-    public void setAddresses(String addresses) {
-        this.addresses = addresses;
-    }
+    void setAddresses(String addresses);
+
+    /**
+     * @return map with
+     *  key - a placeholder name in format #{name}
+     *  value - a placeholder value
+     */
+    Map<String, String> getPlaceholders();
 }
