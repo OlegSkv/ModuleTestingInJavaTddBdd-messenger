@@ -11,6 +11,7 @@ import org.junit.rules.ExpectedException;
 import java.util.HashMap;
 import java.util.Map;
 
+import static junit.framework.TestCase.fail;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -61,5 +62,21 @@ public class TemplateEngineTest {
         when(client.getPlaceholders()).thenReturn(runtimePlaceholders);
 
         assertThrows(RuntimeException.class, () -> templateEngine.generateMessage(template, client));
+    }
+
+//    Template generator ignores values for variables provided at runtime that aren’t found from the template.
+    @Test
+    public void templateGeneratorIgnoresRuntimePlaceholderValuesWhichIsNotInTheTemplate() {
+        fail();
+        Client client = mock(Client.class);
+        Map<String, String> runtimePlaceholders = new HashMap<>();
+        runtimePlaceholders.put("#{first}", "Java");
+        runtimePlaceholders.put("#{second}", "day");
+        runtimePlaceholders.put("#{absentInTemplate}", "Redundant value");
+        when(client.getPlaceholders()).thenReturn(runtimePlaceholders);
+
+        String message = templateEngine.generateMessage(template, client);
+
+        Assertions.assertEquals("Hi, Java. Have a good day", message);
     }
 }
