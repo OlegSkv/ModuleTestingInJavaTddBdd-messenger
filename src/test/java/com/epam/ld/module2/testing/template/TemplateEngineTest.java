@@ -11,6 +11,7 @@ import org.junit.rules.ExpectedException;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -42,7 +43,6 @@ public class TemplateEngineTest {
         Assertions.assertEquals("Hi, Java. Have a good day", message);
     }
 
-    //If at least one placeholder value is not provided at runtime – template generator should throw an exception.
     @Test
     public void templateGeneratorShouldThrowAnExceptionWhenAtLeastOnePlaceholderAbsent() {
         thrown.expect(RuntimeException.class);
@@ -52,5 +52,14 @@ public class TemplateEngineTest {
         when(client.getPlaceholders()).thenReturn(runtimePlaceholders);
 
         templateEngine.generateMessage(template, client);
+    }
+
+    @Test
+    public void templateGeneratorShouldThrowAnExceptionWhenTwoPlaceholdersAbsent() {
+        Client client = mock(Client.class);
+        Map<String, String> runtimePlaceholders = new HashMap<>();
+        when(client.getPlaceholders()).thenReturn(runtimePlaceholders);
+
+        assertThrows(RuntimeException.class, () -> templateEngine.generateMessage(template, client));
     }
 }
