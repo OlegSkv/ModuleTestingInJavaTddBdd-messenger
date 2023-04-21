@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -75,5 +76,20 @@ public class TemplateEngineTest {
         String message = templateEngine.generateMessage(template, client);
 
         Assertions.assertEquals("Hi, Java. Have a good day", message);
+    }
+
+//    System should support values passed in runtime with #{…}.
+    @Test
+    public void templateGeneratorShouldSupportSpecialPlaceholderValues() {
+        fail();
+        Client client = mock(Client.class);
+        Map<String, String> runtimePlaceholders = new HashMap<>();
+        runtimePlaceholders.put("#{first}", "Java");
+        runtimePlaceholders.put("#{second}", "#{specialValue}");
+        when(client.getPlaceholders()).thenReturn(runtimePlaceholders);
+
+        String message = templateEngine.generateMessage(template, client);
+
+        Assertions.assertEquals("Hi, Java. Have a good #{specialValue}", message);
     }
 }
