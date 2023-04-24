@@ -16,7 +16,7 @@ class ConsoleReaderTest {
     void getPlaceholdersByValuesShouldReadDataFromConsole() {
         PrintStream out = System.out;
         ByteArrayInputStream in =
-                new ByteArrayInputStream("firstPlaceholder\nfirstValue\n".getBytes(StandardCharsets.ISO_8859_1));
+                new ByteArrayInputStream("firstPlaceholder\nfirstValue\nn".getBytes(StandardCharsets.ISO_8859_1));
         ConsoleReader consoleReader = new ConsoleReader(in, out);
 
         Map<String, String> placeholdersByValues = consoleReader.getPlaceholdersByValues();
