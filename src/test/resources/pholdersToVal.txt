@@ -1,0 +1,2 @@
+#{first}=value for the first placeholder
+#{second}=second value
