@@ -26,5 +26,5 @@ public interface Client {
      *  key - a placeholder name in format #{name}
      *  value - a placeholder value
      */
-    Map<String, String> getPlaceholders();
+    Map<String, String> getPlaceholdersToValues();
 }

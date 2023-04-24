@@ -21,10 +21,10 @@ public class TemplateEngine {
      */
     public String generateMessage(Template template, Client client) {
         String result = template.getTemplate();
-        Map<String, String> clientPlaceholders = client.getPlaceholders();
+        Map<String, String> clientPlaceholdersToValues = client.getPlaceholdersToValues();
         Set<String> templatePlaceholders = getTemplatePlaceholders(result);
-        comparePlaceholders(clientPlaceholders.keySet(), templatePlaceholders);
-        for (Map.Entry<String, String> entry : clientPlaceholders.entrySet()) {
+        comparePlaceholders(clientPlaceholdersToValues.keySet(), templatePlaceholders);
+        for (Map.Entry<String, String> entry : clientPlaceholdersToValues.entrySet()) {
             result = result.replace(entry.getKey(), entry.getValue());
         }
         return result;

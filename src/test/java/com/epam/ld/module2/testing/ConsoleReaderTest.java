@@ -19,7 +19,7 @@ class ConsoleReaderTest {
                 new ByteArrayInputStream("firstPlaceholder\nfirstValue\nn".getBytes(StandardCharsets.ISO_8859_1));
         ConsoleReader consoleReader = new ConsoleReader(in, out);
 
-        Map<String, String> placeholdersByValues = consoleReader.getPlaceholdersByValues();
+        Map<String, String> placeholdersByValues = consoleReader.getPlaceholdersToValues();
 
         assertTrue(placeholdersByValues.containsKey("#{firstPlaceholder}"));
         assertEquals(placeholdersByValues.get("#{firstPlaceholder}"), "firstValue");

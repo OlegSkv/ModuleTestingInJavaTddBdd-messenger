@@ -27,11 +27,11 @@ public class ConsoleReader implements PlaceholdersReader {
     }
 
     /**
-     * Reads data from console and creates a map from these data.
+     * Returns map using console input
      * @return map with key - placeholder name in format #{placeholderName}, value - placeholder content
      */
     @Override
-    public Map<String, String> getPlaceholdersByValues() {
+    public Map<String, String> getPlaceholdersToValues() {
         Map<String, String> placeholderByValue = new HashMap<>();
         Scanner scanner = new Scanner(in, StandardCharsets.ISO_8859_1.name());
         boolean isNext = true;

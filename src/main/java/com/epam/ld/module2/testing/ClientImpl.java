@@ -34,7 +34,7 @@ public class ClientImpl implements Client {
      *  value - placeholder value
      */
     @Override
-    public Map<String, String> getPlaceholders() {
+    public Map<String, String> getPlaceholdersToValues() {
         return null;
     }
 }

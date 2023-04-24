@@ -33,10 +33,10 @@ public class TemplateEngineTest {
     @Test
     public void templatePlaceholdersShouldBeReplacedWithRuntimeValues() {
         Client client = mock(Client.class);
-        Map<String, String> runtimePlaceholders = new HashMap<>();
-        runtimePlaceholders.put("#{first}", "Java");
-        runtimePlaceholders.put("#{second}", "day");
-        when(client.getPlaceholders()).thenReturn(runtimePlaceholders);
+        Map<String, String> runtimePlaceholdersToValues = new HashMap<>();
+        runtimePlaceholdersToValues.put("#{first}", "Java");
+        runtimePlaceholdersToValues.put("#{second}", "day");
+        when(client.getPlaceholdersToValues()).thenReturn(runtimePlaceholdersToValues);
 
         String message = templateEngine.generateMessage(template, client);
 
@@ -47,9 +47,9 @@ public class TemplateEngineTest {
     public void templateGeneratorShouldThrowAnExceptionWhenAtLeastOnePlaceholderAbsent() {
         thrown.expect(RuntimeException.class);
         Client client = mock(Client.class);
-        Map<String, String> runtimePlaceholders = new HashMap<>();
-        runtimePlaceholders.put("#{first}", "Java");
-        when(client.getPlaceholders()).thenReturn(runtimePlaceholders);
+        Map<String, String> runtimePlaceholdersToValues = new HashMap<>();
+        runtimePlaceholdersToValues.put("#{first}", "Java");
+        when(client.getPlaceholdersToValues()).thenReturn(runtimePlaceholdersToValues);
 
         templateEngine.generateMessage(template, client);
     }
@@ -57,8 +57,8 @@ public class TemplateEngineTest {
     @Test
     public void templateGeneratorShouldThrowAnExceptionWhenTwoPlaceholdersAbsent() {
         Client client = mock(Client.class);
-        Map<String, String> runtimePlaceholders = new HashMap<>();
-        when(client.getPlaceholders()).thenReturn(runtimePlaceholders);
+        Map<String, String> runtimePlaceholdersToValues = new HashMap<>();
+        when(client.getPlaceholdersToValues()).thenReturn(runtimePlaceholdersToValues);
 
         assertThrows(RuntimeException.class, () -> templateEngine.generateMessage(template, client));
     }
@@ -66,11 +66,11 @@ public class TemplateEngineTest {
     @Test
     public void templateGeneratorIgnoresRuntimePlaceholderValuesWhichIsNotInTheTemplate() {
         Client client = mock(Client.class);
-        Map<String, String> runtimePlaceholders = new HashMap<>();
-        runtimePlaceholders.put("#{first}", "Java");
-        runtimePlaceholders.put("#{second}", "day");
-        runtimePlaceholders.put("#{absentInTemplate}", "Redundant value");
-        when(client.getPlaceholders()).thenReturn(runtimePlaceholders);
+        Map<String, String> runtimePlaceholdersToValues = new HashMap<>();
+        runtimePlaceholdersToValues.put("#{first}", "Java");
+        runtimePlaceholdersToValues.put("#{second}", "day");
+        runtimePlaceholdersToValues.put("#{absentInTemplate}", "Redundant value");
+        when(client.getPlaceholdersToValues()).thenReturn(runtimePlaceholdersToValues);
 
         String message = templateEngine.generateMessage(template, client);
 
@@ -81,10 +81,10 @@ public class TemplateEngineTest {
     @Test
     public void templateGeneratorShouldSupportSpecialPlaceholderValues() {
         Client client = mock(Client.class);
-        Map<String, String> runtimePlaceholders = new HashMap<>();
-        runtimePlaceholders.put("#{first}", "Java");
-        runtimePlaceholders.put("#{second}", "#{specialValue}");
-        when(client.getPlaceholders()).thenReturn(runtimePlaceholders);
+        Map<String, String> runtimePlaceholdersToValues = new HashMap<>();
+        runtimePlaceholdersToValues.put("#{first}", "Java");
+        runtimePlaceholdersToValues.put("#{second}", "#{specialValue}");
+        when(client.getPlaceholdersToValues()).thenReturn(runtimePlaceholdersToValues);
 
         String message = templateEngine.generateMessage(template, client);
 
