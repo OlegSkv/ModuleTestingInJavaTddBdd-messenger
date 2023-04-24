@@ -10,10 +10,11 @@ class FileReaderTest {
 
     @Test
     void getPlaceholdersToValuesShouldReadDataFromFile() {
-        FileReader fileReader = new FileReader("/pholdersToVal.txt");
+        FileReader fileReader = new FileReader("src/test/resources/pholdersToVal.txt");
         Map<String, String> placeholdersToValues = fileReader.getPlaceholdersToValues();
 
-        assertEquals(placeholdersToValues.get("#{first}"), "value for the first placeholder");
-        assertEquals(placeholdersToValues.get("#{second}"), "second value");
+        assertEquals(2, placeholdersToValues.size());
+        assertEquals("value for the first placeholder", placeholdersToValues.get("#{first}"));
+        assertEquals("second value", placeholdersToValues.get("#{second}"));
     }
 }
