@@ -15,6 +15,13 @@ public class ConsoleReader implements PlaceholdersReader {
     private final InputStream in;
     private final PrintStream out;
 
+    /**
+     * Creates reader with standard io streams
+     */
+    public ConsoleReader() {
+        this.in = System.in;
+        this.out = System.out;
+    }
 
     /**
      * Creates reader with custom input and output streams for testing purpose.

@@ -10,7 +10,13 @@ public class InputOutputFactory {
      * @return console or file reader
      */
     public PlaceholdersReader createReader(String[] args) {
-       return null;
+        if (args.length == 0) {
+            return new ConsoleReader();
+        } else if (args.length == 2) {
+            return new FileReader(args[0]);
+        } else {
+            throw new IllegalArgumentException("Zero or two argument is required to run this application");
+        }
     }
 
     /**
@@ -18,6 +24,12 @@ public class InputOutputFactory {
      * @return console or file printer
      */
     public MessagePrinter createPrinter(String[] args) {
-        return null;
+        if (args.length == 0) {
+            return new ConsolePrinter();
+        } else if (args.length == 2) {
+            return new FilePrinter(args[1]);
+        } else {
+            throw new IllegalArgumentException("Zero or two argument is required to run this application");
+        }
     }
 }
