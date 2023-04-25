@@ -1,6 +1,7 @@
 package com.epam.ld.module2.testing.template;
 
 import com.epam.ld.module2.testing.Client;
+import com.epam.ld.module2.testing.ClientImpl;
 import org.junit.Rule;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -32,11 +33,7 @@ public class TemplateEngineTest {
 
     @Test
     public void templatePlaceholdersShouldBeReplacedWithRuntimeValues() {
-        Client client = mock(Client.class);
-        Map<String, String> runtimePlaceholdersToValues = new HashMap<>();
-        runtimePlaceholdersToValues.put("#{first}", "Java");
-        runtimePlaceholdersToValues.put("#{second}", "day");
-        when(client.getPlaceholdersToValues()).thenReturn(runtimePlaceholdersToValues);
+        Client client = new ClientImpl();
 
         String message = templateEngine.generateMessage(template, client);
 
