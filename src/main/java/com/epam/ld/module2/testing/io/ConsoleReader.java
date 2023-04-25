@@ -53,12 +53,12 @@ public class ConsoleReader implements PlaceholdersReader {
 
     private String getInput(String userMessage, Scanner scanner) {
         out.println(userMessage);
-        return scanner.next();
+        return scanner.nextLine();
     }
 
     private boolean isNextInput(Scanner scanner) {
         out.println("Continue input? y/n:");
-        char nextInputAnswer = scanner.next().charAt(0);
-        return nextInputAnswer == 'y' || nextInputAnswer == 'Y';
+        String nextInputAnswer = scanner.nextLine();
+        return nextInputAnswer.equals("y") || nextInputAnswer.equals("Y");
     }
 }
