@@ -2,6 +2,7 @@ package com.epam.ld.module2.testing.template;
 
 import com.epam.ld.module2.testing.Client;
 import com.epam.ld.module2.testing.ClientImpl;
+import com.epam.ld.module2.testing.io.ConsoleReader;
 import org.junit.Rule;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,6 +10,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.migrationsupport.rules.EnableRuleMigrationSupport;
 import org.junit.rules.ExpectedException;
 
+import java.io.ByteArrayInputStream;
+import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,7 +37,11 @@ public class TemplateEngineTest {
 
     @Test
     public void templatePlaceholdersShouldBeReplacedWithRuntimeValues() {
-        Client client = new ClientImpl();
+        PrintStream out = System.out;
+        ByteArrayInputStream in =
+                new ByteArrayInputStream("first\nJava\ny\nsecond\nday\nn".getBytes(StandardCharsets.ISO_8859_1));
+        ConsoleReader reader = new ConsoleReader(in, out);
+        Client client = new ClientImpl(reader);
 
         String message = templateEngine.generateMessage(template, client);
 

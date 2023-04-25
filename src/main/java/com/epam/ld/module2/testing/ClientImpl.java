@@ -1,12 +1,20 @@
 package com.epam.ld.module2.testing;
 
+import com.epam.ld.module2.testing.io.ConsoleReader;
+
 import java.util.Map;
 
 /**
  * The type Client.
  */
 public class ClientImpl implements Client {
+
+    private final ConsoleReader reader;
     private String addresses;
+
+    public ClientImpl(ConsoleReader reader) {
+        this.reader = reader;
+    }
 
     /**
      * Gets addresses.
@@ -30,11 +38,11 @@ public class ClientImpl implements Client {
 
     /**
      * @return map with
-     *  key - placeholder name
-     *  value - placeholder value
+     * key - placeholder name
+     * value - placeholder value
      */
     @Override
     public Map<String, String> getPlaceholdersToValues() {
-        return null;
+        return reader.getPlaceholdersToValues();
     }
 }
