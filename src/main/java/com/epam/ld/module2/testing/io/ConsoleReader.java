@@ -1,4 +1,4 @@
-package com.epam.ld.module2.testing;
+package com.epam.ld.module2.testing.io;
 
 import java.io.InputStream;
 import java.io.PrintStream;
