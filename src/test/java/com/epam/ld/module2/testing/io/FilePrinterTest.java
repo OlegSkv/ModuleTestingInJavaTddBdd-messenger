@@ -1,6 +1,7 @@
 package com.epam.ld.module2.testing.io;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -14,15 +15,15 @@ import static org.junit.jupiter.api.Assertions.*;
 class FilePrinterTest {
 
     @Test
-    void print() {
-        String filePath =  "src/test/resources/output.txt";
-        MessagePrinter filePrinter = new FilePrinter(filePath);
+    void print(@TempDir Path tempDir) {
+        Path tempFile = tempDir.resolve("output.txt");
+        String file = tempFile.toAbsolutePath().toString();
+
+        MessagePrinter filePrinter = new FilePrinter(file);
         filePrinter.print("user1@user", "message content" );
 
-        String fileContent = getFileContent(filePath);
-
-        Path path = Paths.get(filePath);
-
+        String fileContent = getFileContent(file);
+        Path path = Paths.get(file);
         assertTrue(Files.exists(path));
         assertTrue(fileContent.contains("user1@user"));
         assertTrue(fileContent.contains("message content"));
