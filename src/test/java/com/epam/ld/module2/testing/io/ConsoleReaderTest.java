@@ -1,6 +1,8 @@
 package com.epam.ld.module2.testing.io;
 
+import com.epam.ld.module2.testing.TestExecutionInfo;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.io.ByteArrayInputStream;
 import java.io.PrintStream;
@@ -10,6 +12,7 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@ExtendWith(TestExecutionInfo.class)
 class ConsoleReaderTest {
 
     @Test

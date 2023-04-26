@@ -2,11 +2,13 @@ package com.epam.ld.module2.testing.template;
 
 import com.epam.ld.module2.testing.Client;
 import com.epam.ld.module2.testing.ClientImpl;
+import com.epam.ld.module2.testing.TestExecutionInfo;
 import com.epam.ld.module2.testing.io.ConsoleReader;
 import org.junit.Rule;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.migrationsupport.rules.EnableRuleMigrationSupport;
 import org.junit.rules.ExpectedException;
 
@@ -16,6 +18,7 @@ import java.nio.charset.StandardCharsets;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+@ExtendWith(TestExecutionInfo.class)
 @EnableRuleMigrationSupport
 public class TemplateEngineTest {
 
