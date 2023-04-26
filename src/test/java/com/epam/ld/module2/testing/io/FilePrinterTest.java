@@ -1,5 +1,6 @@
 package com.epam.ld.module2.testing.io;
 
+import com.epam.ld.module2.testing.Duplicate;
 import org.junit.Rule;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
@@ -19,6 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @EnableRuleMigrationSupport
 class FilePrinterTest {
 
+    @Duplicate
     @Test
     void print(@TempDir Path tempDir) {
         Path tempFile = tempDir.resolve("output.txt");

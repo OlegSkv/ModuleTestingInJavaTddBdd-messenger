@@ -42,7 +42,9 @@ dependencies {
 }
 
 test {
-    useJUnitPlatform()
+    useJUnitPlatform {
+        excludeTags("duplicate")
+    }
     testLogging {
         events "passed", "skipped", "failed"
     }
