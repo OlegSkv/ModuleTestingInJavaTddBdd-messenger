@@ -1,6 +1,7 @@
 package com.epam.ld.module2.testing.io;
 
 import java.io.PrintStream;
+import java.time.LocalDateTime;
 
 public class ConsolePrinter implements MessagePrinter {
 
@@ -28,5 +29,10 @@ public class ConsolePrinter implements MessagePrinter {
      */
     @Override
     public void print(String addresses, String messageContent) {
+        out.println("************" + LocalDateTime.now() + "*************");
+        out.println("The message with the following content was sent to the addresses:");
+        out.println("\t" + addresses);
+        out.println();
+        out.println(messageContent);
     }
 }

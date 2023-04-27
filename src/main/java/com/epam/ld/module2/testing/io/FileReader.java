@@ -10,12 +10,17 @@ import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 /**
- * Reads placeholder's names and values from file
+ * Reads placeholder's names and values from a file<br>
+ * Each line in the file should contain one placeholder and value. For example: #{placeholderName}=value
  */
 public class FileReader implements PlaceholdersReader {
 
     private final String filePath;
 
+
+    /**
+     * @param absoluteFilePath absolute path to a file with input data
+     */
     public FileReader(String absoluteFilePath) {
         this.filePath = absoluteFilePath;
     }

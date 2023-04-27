@@ -1,6 +1,6 @@
 package com.epam.ld.module2.testing;
 
-import com.epam.ld.module2.testing.io.ConsoleReader;
+import com.epam.ld.module2.testing.io.PlaceholdersReader;
 
 import java.util.Map;
 
@@ -9,10 +9,10 @@ import java.util.Map;
  */
 public class ClientImpl implements Client {
 
-    private final ConsoleReader reader;
+    private final PlaceholdersReader reader;
     private String addresses;
 
-    public ClientImpl(ConsoleReader reader) {
+    public ClientImpl(PlaceholdersReader reader) {
         this.reader = reader;
     }
 
