@@ -1,10 +1,8 @@
 package com.epam.ld.module2.testing.io;
 
 import com.epam.ld.module2.testing.Duplicate;
-import com.epam.ld.module2.testing.TestExecutionInfo;
 import org.junit.Rule;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.io.TempDir;
 import org.junit.jupiter.migrationsupport.rules.EnableRuleMigrationSupport;
 import org.junit.rules.TemporaryFolder;
@@ -19,7 +17,6 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@ExtendWith(TestExecutionInfo.class)
 @EnableRuleMigrationSupport
 class FilePrinterTest {
 

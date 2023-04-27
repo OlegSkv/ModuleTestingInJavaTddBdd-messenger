@@ -1,14 +1,11 @@
 package com.epam.ld.module2.testing.io;
 
-import com.epam.ld.module2.testing.TestExecutionInfo;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@ExtendWith(TestExecutionInfo.class)
 class FileReaderTest {
 
     @Test

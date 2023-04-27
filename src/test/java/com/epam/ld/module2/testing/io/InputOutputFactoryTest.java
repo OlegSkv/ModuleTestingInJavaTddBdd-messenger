@@ -1,16 +1,13 @@
 package com.epam.ld.module2.testing.io;
 
-import com.epam.ld.module2.testing.TestExecutionInfo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-@ExtendWith(TestExecutionInfo.class)
 class InputOutputFactoryTest {
 
     @Test
