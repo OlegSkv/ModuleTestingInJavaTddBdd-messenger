@@ -1,5 +1,6 @@
 package com.epam.ld.module2.testing.io;
 
+import com.epam.ld.module2.testing.condition.DisabledForSecondsRange;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
@@ -13,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class ConsoleReaderTest {
 
     @Test
+    @DisabledForSecondsRange(fromSecond = "0", toSecond = "30")
     void getPlaceholdersByValuesShouldReadDataFromConsole() {
         PrintStream out = System.out;
         ByteArrayInputStream in =

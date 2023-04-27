@@ -1,1 +1,2 @@
 com.epam.ld.module2.testing.TestExecutionInfo
+com.epam.ld.module2.testing.condition.DisabledForSecondsRangeCondition
