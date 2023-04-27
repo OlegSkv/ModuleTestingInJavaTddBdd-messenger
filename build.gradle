@@ -37,13 +37,18 @@ dependencies {
     testRuntimeOnly ('org.junit.jupiter:junit-jupiter-engine:5.6.2')
     testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.6.2")
     testRuntimeOnly("org.junit.vintage:junit-vintage-engine:5.6.2")
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: '3.12.4'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-migrationsupport', version: '5.6.2'
 }
 
 test {
-    useJUnitPlatform()
+    useJUnitPlatform {
+        excludeTags("duplicate")
+    }
     testLogging {
         events "passed", "skipped", "failed"
     }
+    systemProperty("junit.jupiter.extensions.autodetection.enabled", true)
 }
 
 checkstyle {
@@ -93,3 +98,8 @@ tasks.withType(Pmd) {
     }
 }
 
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.epam.ld.module2.testing.Main'
+    }
+}
